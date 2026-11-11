@@ -54,7 +54,16 @@ def generate_js_loader(wasm_path, js_path):
         if (isInitialized) return wasmExports;
 
         const importObject = options.importObject || {{}};
-        const wasmUrl = options.wasmUrl || 'wasm/securesave.wasm';
+        let wasmUrl = options.wasmUrl || 'wasm/securesave.wasm';
+
+        // Resolve relative URL safely against document base URI for subpaths (e.g. /SecureSave/)
+        if (typeof document !== 'undefined' && document.baseURI) {{
+            try {{
+                wasmUrl = new URL(wasmUrl, document.baseURI).href;
+            }} catch (e) {{
+                // Keep original relative URL if URL constructor fails
+            }}
+        }}
 
         // 1. Try streaming instantiation if on HTTP/HTTPS
         if (typeof window !== 'undefined' && window.location && window.location.protocol.startsWith('http') && typeof WebAssembly.instantiateStreaming === 'function') {{
