@@ -39,3 +39,4 @@ int simulator_validate(double income_a, double expense_a, double income_b, doubl
     if (income_a == 0.0 || income_b == 0.0) return 3; /* Zero income */
     return 0; /* Valid */
 }
+

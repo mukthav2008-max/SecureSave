@@ -33,3 +33,4 @@ int simulator_validate(double income_a, double expense_a, double income_b, doubl
 #endif
 
 #endif /* SIMULATOR_H */
+

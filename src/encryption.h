@@ -47,3 +47,4 @@ int rsa_validate_all(int64_t p, int64_t q, int64_t e, int64_t message);
 #endif
 
 #endif /* ENCRYPTION_H */
+

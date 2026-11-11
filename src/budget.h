@@ -29,3 +29,4 @@ int budget_status_code(double savings_percentage, double savings);
 #endif
 
 #endif /* BUDGET_H */
+

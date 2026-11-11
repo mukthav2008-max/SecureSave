@@ -52,3 +52,4 @@ int budget_status_code(double savings_percentage, double savings) {
     }
     return 4;      /* Exceptional savings (>50%) */
 }
+

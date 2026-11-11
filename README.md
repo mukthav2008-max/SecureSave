@@ -224,3 +224,4 @@ git push -u origin main
 7. **Extended Euclidean Algorithm:** Solves Bézout's identity $ax + by = \gcd(a, b)$ to locate modular multiplicative inverses.
 8. **Euler's Totient Theorem:** $M^{\phi(n)} \equiv 1 \pmod n$, ensuring trapdoor inversion:
    $$M^{ed} \equiv M^{k\phi(n) + 1} \equiv (M^{\phi(n)})^k \cdot M \equiv 1^k \cdot M \equiv M \pmod n$$
+

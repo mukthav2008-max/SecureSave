@@ -21,3 +21,4 @@ clean:
 	rm -rf wasm/*.wasm wasm/*.js
 
 .PHONY: all test clean
+

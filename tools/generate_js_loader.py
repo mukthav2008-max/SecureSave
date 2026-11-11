@@ -105,3 +105,4 @@ if __name__ == "__main__":
     wasm_p = os.path.join("wasm", "securesave.wasm")
     js_p = os.path.join("wasm", "securesave.js")
     generate_js_loader(wasm_p, js_p)
+

@@ -27,3 +27,4 @@ int prediction_validate(double initial_savings, double monthly_contribution, dou
 #endif
 
 #endif /* PREDICTION_H */
+

@@ -58,3 +58,4 @@ int prediction_validate(double initial_savings, double monthly_contribution, dou
     if (months <= 0 || months > 600) return 4; /* Invalid month range (1 - 50 years) */
     return 0; /* Valid */
 }
+

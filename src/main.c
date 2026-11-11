@@ -142,3 +142,4 @@ int c_simulator_validate(double income_a, double expense_a, double income_b, dou
 int main(void) {
     return 0;
 }
+

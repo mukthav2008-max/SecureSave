@@ -1005,3 +1005,4 @@ if __name__ == "__main__":
     with open(wasm_path, "wb") as f:
         f.write(wasm_bytes)
     print(f"Generated {wasm_path} ({len(wasm_bytes)} bytes)")
+
