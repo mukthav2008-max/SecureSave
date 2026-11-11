@@ -1,0 +1,21 @@
+# Windows thumbnails and metadata
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Editor / OS files
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*~
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Node modules (if any installed locally)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

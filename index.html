@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SecureSave – Where Mathematics Meets Money and Cybersecurity</title>
+  <meta name="description" content="An educational fintech platform demonstrating how mathematics drives everyday financial decisions and digital cybersecurity using C and WebAssembly.">
+  <link rel="stylesheet" href="style.css">
+  <!-- Chart.js for Interactive Financial Graphs -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- Top WebAssembly C Engine Bar -->
+  <div class="wasm-engine-bar" id="wasmBar">
+    <div class="container wasm-bar-content">
+      <div class="wasm-badge" id="wasmStatusBadge">
+        <span class="wasm-badge-dot"></span>
+        <span id="wasmStatusText">Initializing WebAssembly C Engine...</span>
+      </div>
+      <div class="wasm-details">
+        <span>Architecture: <strong>C Core &rarr; WebAssembly (WASM) &rarr; JavaScript UI</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#home" class="brand">
+        <div class="brand-icon">
+          <span>&sum;</span>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">SecureSave</span>
+          <span class="brand-tagline">Math &bull; Money &bull; Cybersecurity</span>
+        </div>
+      </a>
+
+      <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">
+        &#9776;
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#dashboard" class="nav-link">Dashboard</a></li>
+        <li><a href="#budget" class="nav-link">Budget Tracker</a></li>
+        <li><a href="#predictor" class="nav-link">Savings Predictor</a></li>
+        <li><a href="#security" class="nav-link">RSA Security</a></li>
+        <li><a href="#simulator" class="nav-link">Decision Simulator</a></li>
+        <li><a href="#learning" class="nav-link">Math Lab</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero" id="home">
+    <div class="container">
+      <div class="hero-pill">
+        <span class="hero-pill-icon">&diams;</span>
+        <span>Educational Fintech & Cryptography Demonstration</span>
+      </div>
+      <h1 class="hero-title">Where <span>Mathematics</span> Meets Money and Cybersecurity</h1>
+      <p class="hero-desc">
+        Discover the mathematical foundations behind personal financial freedom and digital data protection.
+        All financial computations and cryptographic algorithms are written in <strong>C</strong> and run natively inside your browser via <strong>WebAssembly</strong>.
+      </p>
+      <div class="hero-actions">
+        <a href="#budget" class="btn btn-primary">Try Budget Tracker</a>
+        <a href="#security" class="btn btn-secondary">Explore RSA Encryption</a>
+        <a href="#learning" class="btn btn-outline">Learn the Mathematics</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Section: Dashboard Overview -->
+  <section class="section" id="dashboard">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Executive Summary</span>
+        <h2>Financial Snapshot Dashboard</h2>
+        <p class="section-desc">Live financial health metrics calculated in real-time by compiled C routines.</p>
+      </div>
+
+      <!-- Dashboard Metric Cards -->
+      <div class="dashboard-grid">
+        <div class="stat-card stat-green">
+          <span class="stat-label">Total Monthly Income</span>
+          <span class="stat-value" id="dashIncome">&infin;</span>
+          <span class="stat-sub">Monthly cash inflow baseline</span>
+        </div>
+        <div class="stat-card stat-blue">
+          <span class="stat-label">Total Monthly Expenses</span>
+          <span class="stat-value" id="dashExpenses">&infin;</span>
+          <span class="stat-sub">Aggregated categorized outflows</span>
+        </div>
+        <div class="stat-card stat-gold">
+          <span class="stat-label">Remaining Monthly Savings</span>
+          <span class="stat-value" id="dashSavings">&infin;</span>
+          <span class="stat-sub">Income &minus; Expenses</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Savings Rate</span>
+          <span class="stat-value" id="dashSavingsRate">&infin;</span>
+          <span class="stat-sub" id="dashHealthTier">Health: Analyzing...</span>
+        </div>
+      </div>
+
+      <!-- Quick Jump Cards -->
+      <div class="quick-nav-grid">
+        <a href="#budget" class="quick-nav-card">
+          <div class="quick-nav-icon">&#128202;</div>
+          <h4>Smart Budget Tracker</h4>
+          <p>Allocate spending categories and compute savings rate with arithmetic C modules.</p>
+        </a>
+        <a href="#predictor" class="quick-nav-card">
+          <div class="quick-nav-icon">&#128200;</div>
+          <h4>Future Savings Predictor</h4>
+          <p>Model compound interest and recurring contributions over 6 and 12-month horizons.</p>
+        </a>
+        <a href="#security" class="quick-nav-card">
+          <div class="quick-nav-icon">&#128274;</div>
+          <h4>Mathematical Security (RSA)</h4>
+          <p>Interactive small-prime RSA walkthrough demonstrating modular arithmetic & keys.</p>
+        </a>
+        <a href="#simulator" class="quick-nav-card">
+          <div class="quick-nav-icon">&#9878;</div>
+          <h4>Decision Simulator</h4>
+          <p>Compare financial trade-offs side-by-side to visualize long-term wealth compounding.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Module 1: Smart Budget Tracker -->
+  <section class="section" id="budget">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Module 01</span>
+        <h2>Smart Budget Tracker</h2>
+        <p class="section-desc">Manage expense allocations and analyze savings percentages using verified C arithmetic.</p>
+      </div>
+
+      <div class="module-layout">
+        <!-- Input Form Card -->
+        <div class="card">
+          <h3>Monthly Budget Inputs</h3>
+          <p class="text-muted" style="font-size:0.85rem; margin-bottom:1.25rem;">Enter your monthly income and expenses across essential categories.</p>
+
+          <form id="budgetForm" onsubmit="return false;">
+            <div class="form-group">
+              <label class="form-label" for="budgetIncome">Monthly Income <span class="form-label-hint">(Gross Take-Home)</span></label>
+              <div class="input-wrapper">
+                <span class="input-prefix">&#8377;</span>
+                <input type="number" id="budgetIncome" class="form-control" value="30000" min="1" step="100" required>
+              </div>
+              <div class="form-error-msg" id="budgetIncomeError">Please enter a valid positive income.</div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="expFood">Food &amp; Groceries</label>
+              <div class="input-wrapper">
+                <span class="input-prefix">&#8377;</span>
+                <input type="number" id="expFood" class="form-control exp-input" value="8000" min="0" step="50">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="expTransport">Transportation &amp; Fuel</label>
+              <div class="input-wrapper">
+                <span class="input-prefix">&#8377;</span>
+                <input type="number" id="expTransport" class="form-control exp-input" value="3000" min="0" step="50">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="expEducation">Education &amp; Learning</label>
+              <div class="input-wrapper">
+                <span class="input-prefix">&#8377;</span>
+                <input type="number" id="expEducation" class="form-control exp-input" value="4000" min="0" step="50">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="expShopping">Shopping &amp; Personal Care</label>
+              <div class="input-wrapper">
+                <span class="input-prefix">&#8377;</span>
+                <input type="number" id="expShopping" class="form-control exp-input" value="2500" min="0" step="50">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="expOther">Other Expenses &amp; Utilities</label>
+              <div class="input-wrapper">
+                <span class="input-prefix">&#8377;</span>
+                <input type="number" id="expOther" class="form-control exp-input" value="2500" min="0" step="50">
+              </div>
+            </div>
+
+            <div class="chip-group" style="margin-top:1rem;">
+              <button type="button" class="chip-btn" id="btnSampleBudget1">Preset: Student Budget</button>
+              <button type="button" class="chip-btn" id="btnSampleBudget2">Preset: Working Professional</button>
+              <button type="button" class="chip-btn" id="btnResetBudget">Reset Defaults</button>
+            </div>
+
+            <div class="formula-callout">
+              <div class="formula-callout-title">
+                <span>&lambda; C Mathematical Formula</span>
+              </div>
+              <div>Expenses: <span class="formula-code">Total = &sum; E_i</span></div>
+              <div style="margin-top:0.25rem;">Savings: <span class="formula-code">Savings = Income - Total</span></div>
+              <div style="margin-top:0.25rem;">Rate: <span class="formula-code">Savings % = (Savings / Income) &times; 100</span></div>
+            </div>
+          </form>
+        </div>
+
+        <!-- Output & Chart Card -->
+        <div class="card">
+          <h3>Calculated Financial Results</h3>
+          <p class="text-muted" style="font-size:0.85rem; margin-bottom:1.25rem;">Outputs computed directly by compiled C functions via WebAssembly.</p>
+
+          <div class="metric-row">
+            <div class="metric-pill">
+              <div class="metric-pill-label">Total Outflows</div>
+              <div class="metric-pill-val" id="outTotalExpenses">&#8377;0</div>
+            </div>
+            <div class="metric-pill">
+              <div class="metric-pill-label">Net Savings</div>
+              <div class="metric-pill-val" id="outSavings">&#8377;0</div>
+            </div>
+            <div class="metric-pill">
+              <div class="metric-pill-label">Savings Rate</div>
+              <div class="metric-pill-val" id="outSavingsRate">0.0%</div>
+            </div>
+          </div>
+
+          <!-- Dynamic Status Banner -->
+          <div class="status-banner healthy" id="budgetStatusBanner">
+            <div class="status-banner-icon" id="budgetStatusIcon">&#10004;</div>
+            <div>
+              <strong id="budgetStatusTitle">Healthy Savings Rate</strong>
+              <div id="budgetStatusDesc">You are saving over 30% of your income. Excellent financial resilience!</div>
+            </div>
+          </div>
+
+          <!-- Doughnut Chart for Expense Allocation -->
+          <div class="chart-box">
+            <div class="chart-title">
+              <span>Expense Distribution Breakdown</span>
+              <span style="font-size:0.75rem; color:var(--text-light); font-weight:normal;">Proportional Allocation</span>
+            </div>
+            <div class="chart-canvas-wrapper">
+              <canvas id="budgetChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Module 2: Future Savings Predictor -->
+  <section class="section" id="predictor">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Module 02</span>
+        <h2>Future Savings Predictor</h2>
+        <p class="section-desc">Understand compound interest mathematics through monthly recurring contributions.</p>
+      </div>
+
+      <div class="module-layout">
+        <!-- Controls Card -->
+        <div class="card">
+          <h3>Investment Parameters</h3>
+          <p class="text-muted" style="font-size:0.85rem; margin-bottom:1.25rem;">Simulate how recurring deposits compound under exponential growth.</p>
+
+          <form id="predictorForm" onsubmit="return false;">
+            <div class="form-group">
+              <label class="form-label" for="predInitial">Initial Savings Balance (P<sub>0</sub>)</label>
+              <div class="input-wrapper">
+                <span class="input-prefix">&#8377;</span>
+                <input type="number" id="predInitial" class="form-control" value="10000" min="0" step="500">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="predMonthly">Monthly Contribution (PMT)</label>
+              <div class="input-wrapper">
+                <span class="input-prefix">&#8377;</span>
+                <input type="number" id="predMonthly" class="form-control" value="2000" min="0" step="100">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="predRate">Annual Interest Rate (% p.a.)</label>
+              <div class="input-wrapper">
+                <span class="input-prefix">%</span>
+                <input type="number" id="predRate" class="form-control" value="6.0" min="0" max="50" step="0.1">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="predMonths">Investment Horizon: <span id="predMonthsLabel" style="font-weight:700; color:var(--headings);">12 Months</span></label>
+              <input type="range" id="predMonths" min="3" max="36" value="12" step="1" style="width:100%; cursor:pointer;">
+              <div class="chip-group" style="margin-top:0.5rem;">
+                <button type="button" class="chip-btn" onclick="setPredictorDuration(6)">6 Months</button>
+                <button type="button" class="chip-btn" onclick="setPredictorDuration(12)">12 Months (1 Year)</button>
+                <button type="button" class="chip-btn" onclick="setPredictorDuration(24)">24 Months (2 Years)</button>
+              </div>
+            </div>
+
+            <div class="formula-callout">
+              <div class="formula-callout-title">
+                <span>&lambda; Compound Interest Formula (Monthly Compounding)</span>
+              </div>
+              <div>Monthly rate: <span class="formula-code">i = r / 1200</span></div>
+              <div style="margin-top:0.25rem;">Future Value: <span class="formula-code">FV = P(1+i)<sup>t</sup> + PMT &times; [((1+i)<sup>t</sup> - 1) / i]</span></div>
+              <div style="margin-top:0.25rem; font-size:0.75rem; color:var(--text-light);">
+                *Assumptions: Recurring deposits added at the end of each monthly period with interest compounded monthly.
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- Projections & Comparison Card -->
+        <div class="card">
+          <h3>Growth Projections &amp; Comparisons</h3>
+          <p class="text-muted" style="font-size:0.85rem; margin-bottom:1.25rem;">Side-by-side milestone breakdown calculated via C WebAssembly.</p>
+
+          <!-- 6-Month vs 12-Month Comparison Grid -->
+          <div class="comparison-grid">
+            <div class="scenario-card scenario-a">
+              <div class="scenario-title">
+                <span>6 Months Horizon</span>
+                <span class="stat-label">Milestone 1</span>
+              </div>
+              <div class="metric-pill" style="margin-bottom:0.6rem;">
+                <div class="metric-pill-label">Future Savings</div>
+                <div class="metric-pill-val" id="predFV6">&#8377;0</div>
+              </div>
+              <div style="font-size:0.8rem; color:var(--text-muted); display:flex; justify-content:space-between; margin-bottom:0.25rem;">
+                <span>Principal Contributed:</span>
+                <strong id="predCont6">&#8377;0</strong>
+              </div>
+              <div style="font-size:0.8rem; color:var(--text-muted); display:flex; justify-content:space-between;">
+                <span>Estimated Interest Earned:</span>
+                <strong id="predInt6" style="color:var(--success);">&#8377;0</strong>
+              </div>
+            </div>
+
+            <div class="scenario-card scenario-b">
+              <div class="scenario-title">
+                <span>12 Months Horizon</span>
+                <span class="stat-label">Milestone 2</span>
+              </div>
+              <div class="metric-pill" style="margin-bottom:0.6rem;">
+                <div class="metric-pill-label">Future Savings</div>
+                <div class="metric-pill-val" id="predFV12">&#8377;0</div>
+              </div>
+              <div style="font-size:0.8rem; color:var(--text-muted); display:flex; justify-content:space-between; margin-bottom:0.25rem;">
+                <span>Principal Contributed:</span>
+                <strong id="predCont12">&#8377;0</strong>
+              </div>
+              <div style="font-size:0.8rem; color:var(--text-muted); display:flex; justify-content:space-between;">
+                <span>Estimated Interest Earned:</span>
+                <strong id="predInt12" style="color:var(--success);">&#8377;0</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Line Graph -->
+          <div class="chart-box">
+            <div class="chart-title">
+              <span>Savings Trajectory Over Time</span>
+              <span style="font-size:0.75rem; color:var(--text-light); font-weight:normal;">Contributions vs Compound Wealth</span>
+            </div>
+            <div class="chart-canvas-wrapper">
+              <canvas id="predictorChart"></canvas>
+            </div>
+          </div>
+
+          <div style="font-size:0.78rem; color:var(--text-light); margin-top:0.75rem; text-align:center;">
+            &#9888; Note: Results are educational mathematical models based on fixed compounding rates, not guaranteed financial investment returns.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Module 3: Mathematical Security System (RSA) -->
+  <section class="section" id="security">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Module 03</span>
+        <h2>Mathematical Security System (RSA)</h2>
+        <p class="section-desc">Experience how number theory, prime numbers, and modular arithmetic secure digital financial messages.</p>
+      </div>
+
+      <div class="module-layout">
+        <!-- Key Generation Controls -->
+        <div class="card">
+          <h3>RSA Key Generator (C Engine)</h3>
+          <p class="text-muted" style="font-size:0.85rem; margin-bottom:1.25rem;">Select two distinct prime numbers to generate an asymmetric RSA key pair.</p>
+
+          <form id="rsaForm" onsubmit="return false;">
+            <div class="form-group">
+              <label class="form-label" for="rsaP">Prime Number p <span class="form-label-hint">(Small prime for demonstration)</span></label>
+              <input type="number" id="rsaP" class="form-control no-prefix" value="61" min="2" max="500">
+              <div class="chip-group">
+                <button type="button" class="chip-btn" onclick="selectPrimeP(11)">11</button>
+                <button type="button" class="chip-btn" onclick="selectPrimeP(17)">17</button>
+                <button type="button" class="chip-btn" onclick="selectPrimeP(29)">29</button>
+                <button type="button" class="chip-btn" onclick="selectPrimeP(43)">43</button>
+                <button type="button" class="chip-btn" onclick="selectPrimeP(61)">61</button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="rsaQ">Prime Number q <span class="form-label-hint">(Must be distinct from p)</span></label>
+              <input type="number" id="rsaQ" class="form-control no-prefix" value="53" min="2" max="500">
+              <div class="chip-group">
+                <button type="button" class="chip-btn" onclick="selectPrimeQ(13)">13</button>
+                <button type="button" class="chip-btn" onclick="selectPrimeQ(19)">19</button>
+                <button type="button" class="chip-btn" onclick="selectPrimeQ(31)">31</button>
+                <button type="button" class="chip-btn" onclick="selectPrimeQ(47)">47</button>
+                <button type="button" class="chip-btn" onclick="selectPrimeQ(53)">53</button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="rsaE">Public Exponent e <span class="form-label-hint">(Must satisfy gcd(e, &phi;(n)) = 1)</span></label>
+              <input type="number" id="rsaE" class="form-control no-prefix" value="17" min="2">
+              <div class="chip-group" id="eCandidatesGroup">
+                <!-- Dynamically generated suggestions -->
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="rsaMsg">Numeric Plaintext Message (M) <span class="form-label-hint">(0 &le; M &lt; n)</span></label>
+              <input type="number" id="rsaMsg" class="form-control no-prefix" value="65" min="0">
+              <div class="chip-group">
+                <button type="button" class="chip-btn" onclick="selectMessage(42)">Code: 42</button>
+                <button type="button" class="chip-btn" onclick="selectMessage(65)">ASCII: 65 ('A')</button>
+                <button type="button" class="chip-btn" onclick="selectMessage(100)">Money: ₹100</button>
+                <button type="button" class="chip-btn" onclick="selectMessage(250)">Amount: 250</button>
+              </div>
+              <div class="form-error-msg" id="rsaMsgError">Message must be strictly less than modulus n.</div>
+            </div>
+
+            <div class="security-disclaimer">
+              <strong>&#9888; Educational Demonstration Only:</strong>
+              This module uses small numbers to illuminate the underlying mathematical steps. Real-world financial cryptographic systems (like online banking and HTTPS) utilize 2048-bit or 4096-bit primes (over 600 digits) to render brute-force integer factorization impossible.
+            </div>
+          </form>
+        </div>
+
+        <!-- Step-by-Step Mathematical Workflow -->
+        <div class="card">
+          <h3>Step-by-Step RSA Cryptographic Pipeline</h3>
+          <p class="text-muted" style="font-size:0.85rem; margin-bottom:1.25rem;">Trace the exact number-theoretic transformations computed by WebAssembly.</p>
+
+          <div class="rsa-steps">
+            <!-- Step 1 & 2: Modulus n -->
+            <div class="rsa-step-card">
+              <div class="rsa-step-header">
+                <span class="rsa-step-badge">Step 1 &bull; Modulus Calculation</span>
+                <span style="font-size:0.75rem; color:var(--text-muted);">Arithmetic Multiplication</span>
+              </div>
+              <p style="font-size:0.85rem; margin-bottom:0.25rem;">Calculate the RSA modulus <em>n</em> as the product of primes <em>p</em> and <em>q</em>:</p>
+              <div class="rsa-math-eq" id="rsaStepN">n = p &times; q = 61 &times; 53 = 3,233</div>
+            </div>
+
+            <!-- Step 3: Euler's Totient phi(n) -->
+            <div class="rsa-step-card">
+              <div class="rsa-step-header">
+                <span class="rsa-step-badge">Step 2 &bull; Euler's Totient Function</span>
+                <span style="font-size:0.75rem; color:var(--text-muted);">&phi;(n) Coprime Count</span>
+              </div>
+              <p style="font-size:0.85rem; margin-bottom:0.25rem;">Count the number of positive integers less than <em>n</em> coprime to <em>n</em>:</p>
+              <div class="rsa-math-eq" id="rsaStepPhi">&phi;(n) = (p - 1) &times; (q - 1) = 60 &times; 52 = 3,120</div>
+            </div>
+
+            <!-- Step 4 & 5: Public and Private Keys -->
+            <div class="rsa-step-card">
+              <div class="rsa-step-header">
+                <span class="rsa-step-badge">Step 3 &bull; Key Pair Generation</span>
+                <span style="font-size:0.75rem; color:var(--text-muted);">Extended Euclidean Algorithm</span>
+              </div>
+              <p style="font-size:0.85rem; margin-bottom:0.25rem;">
+                Public exponent <em>e</em> is chosen coprime to &phi;(n). Private key <em>d</em> is the modular multiplicative inverse:
+              </p>
+              <div class="rsa-math-eq" id="rsaStepD">(e &times; d) &equiv; 1 (mod &phi;(n)) &rarr; (17 &times; 2753) mod 3120 = 1</div>
+
+              <div class="rsa-key-box">
+                <div class="key-card public">
+                  <div class="key-title">&#128275; Public Key (e, n)</div>
+                  <div class="key-content" id="rsaKeyPublic">(17, 3233)</div>
+                  <div style="font-size:0.75rem; color:var(--text-muted); margin-top:0.2rem;">Shared openly for encryption</div>
+                </div>
+                <div class="key-card private">
+                  <div class="key-title">&#128274; Private Key (d, n)</div>
+                  <div class="key-content" id="rsaKeyPrivate">(2753, 3233)</div>
+                  <div style="font-size:0.75rem; color:var(--text-muted); margin-top:0.2rem;">Kept secret for decryption</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 6 & 7: Encryption & Decryption -->
+            <div class="rsa-step-card">
+              <div class="rsa-step-header">
+                <span class="rsa-step-badge">Step 4 &bull; Encryption &amp; Decryption</span>
+                <span style="font-size:0.75rem; color:var(--text-muted);">Modular Exponentiation</span>
+              </div>
+              <div style="margin-bottom:0.6rem;">
+                <div style="font-size:0.85rem; font-weight:600; color:var(--headings);">Encryption (Locking message):</div>
+                <div class="rsa-math-eq" id="rsaStepEnc">C = M<sup>e</sup> mod n = 65<sup>17</sup> mod 3233 = 2,790</div>
+              </div>
+              <div>
+                <div style="font-size:0.85rem; font-weight:600; color:var(--headings);">Decryption (Unlocking ciphertext):</div>
+                <div class="rsa-math-eq" id="rsaStepDec">M' = C<sup>d</sup> mod n = 2790<sup>2753</sup> mod 3233 = 65</div>
+              </div>
+              <div class="status-banner healthy" id="rsaMatchBanner" style="margin-top:0.75rem; padding:0.6rem 0.85rem;">
+                <div class="status-banner-icon">&#9989;</div>
+                <div style="font-size:0.85rem;">
+                  <strong>Mathematical Proof Verified:</strong> Decrypted plaintext matches the original input message exactly (M' = M).
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Module 4: Financial Decision Simulator -->
+  <section class="section" id="simulator">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Module 04</span>
+        <h2>Financial Decision Simulator</h2>
+        <p class="section-desc">Compare two budget scenarios to understand the cumulative compound effect of minor expense reductions.</p>
+      </div>
+
+      <div class="module-layout">
+        <!-- Scenario Inputs -->
+        <div class="card">
+          <h3>Scenario Configuration</h3>
+          <p class="text-muted" style="font-size:0.85rem; margin-bottom:1.25rem;">Test how cutting daily discretionary spending impacts wealth accumulation.</p>
+
+          <div class="comparison-grid">
+            <!-- Scenario A -->
+            <div class="scenario-card scenario-a">
+              <div class="scenario-title">
+                <span>Scenario A (Baseline)</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="simIncA">Monthly Income</label>
+                <div class="input-wrapper">
+                  <span class="input-prefix">&#8377;</span>
+                  <input type="number" id="simIncA" class="form-control" value="30000" min="1" step="100">
+                </div>
+              </div>
+              <div class="form-group" style="margin-bottom:0;">
+                <label class="form-label" for="simExpA">Monthly Expenses</label>
+                <div class="input-wrapper">
+                  <span class="input-prefix">&#8377;</span>
+                  <input type="number" id="simExpA" class="form-control" value="20000" min="0" step="100">
+                </div>
+              </div>
+            </div>
+
+            <!-- Scenario B -->
+            <div class="scenario-card scenario-b">
+              <div class="scenario-title">
+                <span>Scenario B (Optimized)</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="simIncB">Monthly Income</label>
+                <div class="input-wrapper">
+                  <span class="input-prefix">&#8377;</span>
+                  <input type="number" id="simIncB" class="form-control" value="30000" min="1" step="100">
+                </div>
+              </div>
+              <div class="form-group" style="margin-bottom:0;">
+                <label class="form-label" for="simExpB">Monthly Expenses</label>
+                <div class="input-wrapper">
+                  <span class="input-prefix">&#8377;</span>
+                  <input type="number" id="simExpB" class="form-control" value="18000" min="0" step="100">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="chip-group" style="margin-top:1rem;">
+            <button type="button" class="chip-btn" id="btnPresetSim1">Preset: Save ₹2,000 / mo</button>
+            <button type="button" class="chip-btn" id="btnPresetSim2">Preset: Save ₹5,000 / mo</button>
+            <button type="button" class="chip-btn" id="btnResetSim">Reset Comparison</button>
+          </div>
+
+          <div class="formula-callout">
+            <div class="formula-callout-title">
+              <span>&lambda; Comparative Analysis Formula</span>
+            </div>
+            <div>Monthly Savings: <span class="formula-code">S_A = I_A - E_A, &nbsp; S_B = I_B - E_B</span></div>
+            <div style="margin-top:0.25rem;">Difference: <span class="formula-code">&Delta;S = S_B - S_A</span></div>
+            <div style="margin-top:0.25rem;">Improvement: <span class="formula-code">% Gain = ((S_B - S_A) / S_A) &times; 100</span></div>
+          </div>
+        </div>
+
+        <!-- Simulation Comparison Charts & Results -->
+        <div class="card">
+          <h3>Comparative Outcomes &amp; Advantage</h3>
+          <p class="text-muted" style="font-size:0.85rem; margin-bottom:1.25rem;">Calculated differences over 1-month, 6-month, and 12-month periods.</p>
+
+          <div class="metric-row">
+            <div class="metric-pill">
+              <div class="metric-pill-label">Monthly Advantage</div>
+              <div class="metric-pill-val" id="simDiff1" style="color:var(--success);">+&#8377;2,000</div>
+            </div>
+            <div class="metric-pill">
+              <div class="metric-pill-label">6-Month Gain</div>
+              <div class="metric-pill-val" id="simDiff6" style="color:var(--success);">+&#8377;12,000</div>
+            </div>
+            <div class="metric-pill">
+              <div class="metric-pill-label">12-Month Gain</div>
+              <div class="metric-pill-val" id="simDiff12" style="color:var(--success);">+&#8377;24,000</div>
+            </div>
+          </div>
+
+          <div class="sim-diff-card">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <div>
+                <span class="stat-label">Savings Rate Improvement</span>
+                <div class="sim-diff-highlight" id="simImprovementPct">+20.0%</div>
+              </div>
+              <div style="text-align:right; max-width:280px; font-size:0.82rem; color:var(--text-muted);">
+                By reducing monthly expenses by just <strong id="simMonthlySavingsHighlight">&#8377;2,000</strong>, Scenario B generates an extra <strong id="simYearlySavingsHighlight">&#8377;24,000</strong> annually.
+              </div>
+            </div>
+          </div>
+
+          <!-- Grouped Bar Chart -->
+          <div class="chart-box">
+            <div class="chart-title">
+              <span>Cumulative Savings Comparison</span>
+              <span style="font-size:0.75rem; color:var(--text-light); font-weight:normal;">Scenario A vs Scenario B</span>
+            </div>
+            <div class="chart-canvas-wrapper">
+              <canvas id="simulatorChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Mathematics Learning Lab -->
+  <section class="section" id="learning">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Academic Foundations</span>
+        <h2>Mathematics Learning Lab</h2>
+        <p class="section-desc">Understand how fundamental mathematical concepts power the calculations across SecureSave.</p>
+      </div>
+
+      <div class="math-grid">
+        <!-- 1. Basic Arithmetic -->
+        <div class="math-card">
+          <span class="math-card-badge">Arithmetic</span>
+          <h3>1. Basic Arithmetic &amp; Summation</h3>
+          <p>
+            Financial budgeting begins with finite summation (&sum;). Aggregating distinct expense categories into a scalar total allows subtraction from gross income to establish net cash flow.
+          </p>
+          <div class="math-card-eq">&sum; E<sub>i</sub> = E<sub>food</sub> + E<sub>trans</sub> + ...</div>
+          <a href="#budget" class="math-card-action">Applied in Budget Tracker &rarr;</a>
+        </div>
+
+        <!-- 2. Percentages -->
+        <div class="math-card">
+          <span class="math-card-badge">Ratios</span>
+          <h3>2. Percentages &amp; Proportions</h3>
+          <p>
+            Percentages normalize absolute currency values into relative proportions. The savings rate formula enables objective financial health benchmarking regardless of income scale.
+          </p>
+          <div class="math-card-eq">Rate = (Savings / Income) &times; 100%</div>
+          <a href="#budget" class="math-card-action">Applied in Budget Tracker &rarr;</a>
+        </div>
+
+        <!-- 3. Statistics -->
+        <div class="math-card">
+          <span class="math-card-badge">Statistics</span>
+          <h3>3. Categorical Distribution</h3>
+          <p>
+            Statistical breakdown divides expenses into relative categorical weights. Identifying dominant spending sectors highlights where micro-optimizations yield the highest financial return.
+          </p>
+          <div class="math-card-eq">w<sub>k</sub> = E<sub>k</sub> / &sum; E<sub>i</sub></div>
+          <a href="#budget" class="math-card-action">Applied in Expense Doughnut &rarr;</a>
+        </div>
+
+        <!-- 4. Compound Interest -->
+        <div class="math-card">
+          <span class="math-card-badge">Calculus &amp; Algebra</span>
+          <h3>4. Compound Interest &amp; Geometric Series</h3>
+          <p>
+            Compound interest represents exponential accumulation where interest generates interest. Recurring monthly annuity contributions form a geometric progression with exponential expansion over time.
+          </p>
+          <div class="math-card-eq">FV = P(1+i)<sup>t</sup> + PMT &middot; [((1+i)<sup>t</sup> - 1) / i]</div>
+          <a href="#predictor" class="math-card-action">Applied in Savings Predictor &rarr;</a>
+        </div>
+
+        <!-- 5. Prime Numbers -->
+        <div class="math-card">
+          <span class="math-card-badge">Number Theory</span>
+          <h3>5. Prime Numbers &amp; Factorization</h3>
+          <p>
+            Primes are integers greater than 1 with no positive divisors other than 1 and themselves. Multiplying two large primes is trivial, but factoring their product back into primes is computationally infeasible.
+          </p>
+          <div class="math-card-eq">n = p &times; q &emsp; (p, q &isin; Primes)</div>
+          <a href="#security" class="math-card-action">Applied in RSA Key Gen &rarr;</a>
+        </div>
+
+        <!-- 6. GCD & Euclidean Algorithm -->
+        <div class="math-card">
+          <span class="math-card-badge">Algorithms</span>
+          <h3>6. Greatest Common Divisor (GCD)</h3>
+          <p>
+            The Euclidean algorithm computes the greatest common divisor of two integers via iterative modular remainder steps in logarithmic time O(log(min(a, b))). Essential for verifying coprimality.
+          </p>
+          <div class="math-card-eq">gcd(a, b) = gcd(b, a mod b)</div>
+          <a href="#security" class="math-card-action">Applied in RSA Key Gen &rarr;</a>
+        </div>
+
+        <!-- 7. Euler's Totient -->
+        <div class="math-card">
+          <span class="math-card-badge">Number Theory</span>
+          <h3>7. Euler's Totient Function &phi;(n)</h3>
+          <p>
+            Euler's totient function &phi;(n) counts positive integers up to n that are coprime to n. For the product of two distinct primes p and q, the multiplicative property yields an exact closed form.
+          </p>
+          <div class="math-card-eq">&phi;(p &middot; q) = (p - 1) &times; (q - 1)</div>
+          <a href="#security" class="math-card-action">Applied in RSA Totient Step &rarr;</a>
+        </div>
+
+        <!-- 8. Modular Arithmetic -->
+        <div class="math-card">
+          <span class="math-card-badge">Algebra</span>
+          <h3>8. Modular Arithmetic</h3>
+          <p>
+            Often termed "clock arithmetic", numbers wrap around upon reaching a modulus n. It creates cyclic mathematical finite fields (&Z;/n&Z;) that preserve algebraic consistency under addition and multiplication.
+          </p>
+          <div class="math-card-eq">a &equiv; b (mod n) &iff; n | (a - b)</div>
+          <a href="#security" class="math-card-action">Applied in Key Inversion &rarr;</a>
+        </div>
+
+        <!-- 9. RSA Asymmetric Encryption -->
+        <div class="math-card">
+          <span class="math-card-badge">Cryptography</span>
+          <h3>9. RSA Asymmetric Encryption</h3>
+          <p>
+            Governed by Euler's Totient Theorem: M<sup>ed</sup> &equiv; M (mod n). Because only the private key holder knows d, anyone can encrypt with e, but only the intended recipient can invert the trapdoor permutation.
+          </p>
+          <div class="math-card-eq">C = M<sup>e</sup> mod n, &emsp; M = C<sup>d</sup> mod n</div>
+          <a href="#security" class="math-card-action">Applied in RSA Encrypt / Decrypt &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>SecureSave</h3>
+          <p>
+            Where Mathematics Meets Money and Cybersecurity. An educational demonstration platform engineered with C, WebAssembly, and modern web standards.
+          </p>
+          <div style="font-size:0.75rem; color:var(--text-light); margin-top:0.5rem;">
+            Academic Project &bull; Safe Client-Side Execution &bull; Zero Real Financial Data Retained
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#budget">Smart Budget Tracker</a></li>
+            <li><a href="#predictor">Future Savings Predictor</a></li>
+            <li><a href="#security">RSA Security System</a></li>
+            <li><a href="#simulator">Financial Decision Simulator</a></li>
+            <li><a href="#learning">Math Learning Lab</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Architecture</h4>
+          <ul class="footer-links">
+            <li><span>Core Math: <strong>ANSI C</strong></span></li>
+            <li><span>Compiler: <strong>Emscripten</strong></span></li>
+            <li><span>Runtime: <strong>WebAssembly (WASM)</strong></span></li>
+            <li><span>Visuals: <strong>Chart.js &amp; CSS3</strong></span></li>
+            <li><span>Hosting: <strong>GitHub Pages</strong></span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; SecureSave Project. Designed for Educational &amp; Academic Demonstration.
+        </div>
+        <div class="tech-stack-pills">
+          <span class="tech-pill">C Programming</span>
+          <span class="tech-pill">WebAssembly</span>
+          <span class="tech-pill">Chart.js</span>
+          <span class="tech-pill">GitHub Actions</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WebAssembly Glue & Application Logic -->
+  <script src="wasm/securesave.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
