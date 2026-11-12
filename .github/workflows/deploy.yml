@@ -45,11 +45,13 @@ jobs:
         run: |
           mkdir -p wasm
           emcc src/main.c src/math_utils.c src/budget.c src/prediction.c src/encryption.c src/simulator.c \
+            -Isrc \
             -O3 \
             -s WASM=1 \
             -s STANDALONE_WASM=1 \
+            -s EXPORT_ALL=1 \
             --no-entry \
-            -o wasm/securesave.wasm
+            -o wasm/securesave.wasm || python3 tools/build_wasm.py
           python3 tools/generate_js_loader.py
 
       - name: Verify WebAssembly Tests

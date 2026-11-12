@@ -31,6 +31,23 @@ def generate_js_loader(wasm_path, js_path):
     let isInitialized = false;
 
     /**
+     * Normalizes exports so that both c_func and _c_func can be called safely
+     * across different Emscripten optimization levels and linker flags.
+     */
+    function wrapExports(rawExports) {{
+        if (!rawExports) return rawExports;
+        const wrapped = Object.assign({{}}, rawExports);
+        for (const key of Object.keys(rawExports)) {{
+            if (key.startsWith('_c_') && !wrapped[key.substring(1)]) {{
+                wrapped[key.substring(1)] = rawExports[key];
+            }} else if (key.startsWith('c_') && !wrapped['_' + key]) {{
+                wrapped['_' + key] = rawExports[key];
+            }}
+        }}
+        return wrapped;
+    }}
+
+    /**
      * Converts base64 string to Uint8Array buffer safely across environments.
      */
     function base64ToUint8Array(base64) {{
@@ -72,7 +89,7 @@ def generate_js_loader(wasm_path, js_path):
                 if (response.ok) {{
                     const result = await WebAssembly.instantiateStreaming(response, importObject);
                     wasmInstance = result.instance;
-                    wasmExports = wasmInstance.exports;
+                    wasmExports = wrapExports(wasmInstance.exports);
                     isInitialized = true;
                     console.info("[SecureSave] WebAssembly initialized via instantiateStreaming (Network/HTTP).");
                     return wasmExports;
@@ -87,7 +104,7 @@ def generate_js_loader(wasm_path, js_path):
             const bytes = base64ToUint8Array(EMBEDDED_WASM_BASE64);
             const result = await WebAssembly.instantiate(bytes, importObject);
             wasmInstance = result.instance;
-            wasmExports = wasmInstance.exports;
+            wasmExports = wrapExports(wasmInstance.exports);
             isInitialized = true;
             console.info("[SecureSave] WebAssembly initialized via Embedded Bytecode Buffer.");
             return wasmExports;

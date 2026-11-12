@@ -14,7 +14,17 @@ async function runTests() {
     const wasmPath = path.join(__dirname, '..', 'wasm', 'securesave.wasm');
     const wasmBuffer = fs.readFileSync(wasmPath);
     const { instance } = await WebAssembly.instantiate(wasmBuffer, {});
-    const exp = instance.exports;
+    const rawExp = instance.exports;
+    const exp = new Proxy(rawExp, {
+        get(target, prop) {
+            if (prop in target) return target[prop];
+            if (typeof prop === 'string') {
+                if (('_' + prop) in target) return target['_' + prop];
+                if (prop.startsWith('_') && prop.slice(1) in target) return target[prop.slice(1)];
+            }
+            return target[prop];
+        }
+    });
 
     let passed = 0;
     let failed = 0;
