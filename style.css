@@ -1030,7 +1030,7 @@ a:hover {
   border-top: 1px solid var(--border-color);
   padding-top: 1.5rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
