@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # SecureSave – Where Mathematics Meets Money and Cybersecurity
 
 **SecureSave** is an educational fintech and cybersecurity website designed to demonstrate how fundamental mathematical principles power everyday personal financial decisions and modern digital encryption.
@@ -225,3 +226,6 @@ git push -u origin main
 8. **Euler's Totient Theorem:** $M^{\phi(n)} \equiv 1 \pmod n$, ensuring trapdoor inversion:
    $$M^{ed} \equiv M^{k\phi(n) + 1} \equiv (M^{\phi(n)})^k \cdot M \equiv 1^k \cdot M \equiv M \pmod n$$
 
+=======
+# SecureSave
+>>>>>>> 0e625e7dc48259d1430d6045e0dd76cc05458960
