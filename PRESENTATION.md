@@ -85,3 +85,4 @@ This guide helps you present **SecureSave** to college evaluators, professors, a
 
 ### Q5: Why is your RSA demo not suitable for actual banking passwords?
 > **Answer:** *"Our demo uses small primes ($p, q < 100$) so the arithmetic steps can be inspected and understood by students. With small numbers, any computer can factor $n = p \times q$ in microseconds using trial division. Real banking systems use 2048-bit or 4096-bit primes (over 600 digits), where integer factorization would require billions of years on modern supercomputers."*
+
